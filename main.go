@@ -31,8 +31,8 @@ func main() {
 		c.Stream(func(w io.Writer) bool {
 			// Infinite loop for continuous animation
 			for {
-				// Loop through frames 1-10
-				for i := 1; i <= 10; i++ {
+				// Loop through frames 1-20
+				for i := 1; i <= 20; i++ {
 					// Read the frame file
 					frameContent, err := readFrame(i)
 					if err != nil {
@@ -72,7 +72,7 @@ func main() {
 }
 
 func readFrame(frameNumber int) (string, error) {
-	filename := fmt.Sprintf("frames/%d.txt", frameNumber)
+	filename := fmt.Sprintf("frames/%02d.txt", frameNumber)
 	content, err := readFile(filename)
 	if err != nil {
 		return "", err
