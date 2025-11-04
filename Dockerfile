@@ -4,6 +4,9 @@ FROM golang:1.25.3-alpine AS builder
 # Set the working directory inside the container
 WORKDIR /app
 
+# Install build dependencies
+RUN apk add --no-cache gcc musl-dev
+
 # Copy go mod and sum files
 COPY go.mod go.sum ./
 
@@ -13,8 +16,10 @@ RUN go mod download
 # Copy the source code into the container
 COPY . .
 
-# Build the Go app
-RUN go build -o curl-live .
+# Build the Go app with optimized settings for cross-platform builds
+ARG TARGETOS
+ARG TARGETARCH
+RUN CGO_ENABLED=1 GOOS=$TARGETOS GOARCH=$TARGETARCH go build -a -installsuffix cgo -o curl-live .
 
 # Use a minimal alpine image for the final stage
 FROM alpine:latest
