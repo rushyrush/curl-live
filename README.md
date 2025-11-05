@@ -1,14 +1,14 @@
 # curl.live - ASCII Animation Server
 
-This is a simple Go web server that serves ASCII art animations when accessed via curl. The server responds with a 10-frame bouncing ball animation that loops indefinitely.
+This is a simple Go web server that serves ASCII art animations when accessed via curl.
 
 ## How it works
 
-When you curl the server endpoint, it returns 10 frames of ASCII art in sequence with 0.1 second delays between each frame, creating a smooth animation effect. The animation loops continuously until you interrupt it with Ctrl+C. Each frame is stored as a separate text file in the `frames/` directory.
+When you curl the server endpoint, it returns frames of ASCII art in sequence with 0.1 second delays between each frame, creating a smooth animation effect. The animation loops continuously until you interrupt it with Ctrl+C. Each frame is stored as a separate text file in the `frames/` directory.
 
 ## Prerequisites
 
-- Go 1.21 or later (for local development)
+- Go 1.25.3 or later (for local development)
 - Docker (for containerized deployment)
 
 ## Running Locally
@@ -49,8 +49,6 @@ Once the server is running, test it with curl:
 ```bash
 curl http://localhost:8080
 ```
-
-You should see a bouncing ball animation in your terminal that loops continuously! Press Ctrl+C to stop the animation.
 
 ## Project Structure
 
