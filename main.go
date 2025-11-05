@@ -23,7 +23,7 @@ func main() {
 	// Define the root endpoint that returns the ASCII animation
 	router.GET("/", func(c *gin.Context) {
 		// Set headers for streaming response
-		c.Header("Content-Type", "text/plain; charset=utf-8")
+		c.Header("Content-Type", "text/event-stream")
 		c.Header("Cache-Control", "no-cache")
 		c.Header("Connection", "keep-alive")
 
